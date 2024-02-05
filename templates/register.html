@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-primary shadow">
+                <div class="card-body p-4">
+                    <h2 class="card-title text-center mb-4">Register</h2>
+                    <!-- Registration form -->
+                    <form action="/register" method="post">
+                        <!-- Username input field -->
+                        <div class="mb-3">
+                            <input autocomplete="off" autofocus class="form-control" id="username" name="username" placeholder="Username" type="text">
+                        </div>
+                        <!-- Password input field -->
+                        <div class="mb-3">
+                            <input class="form-control" id="password" name="password" placeholder="Password" type="password">
+                        </div>
+                        <!-- Confirm password input field -->
+                        <div class="mb-3">
+                            <input class="form-control" id="confirmation" name="confirmation" placeholder="Confirm Password" type="password">
+                        </div>
+                        <!-- Register button -->
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-block" type="submit">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

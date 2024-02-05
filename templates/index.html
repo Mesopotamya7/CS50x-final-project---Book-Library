@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+<!-- Main header -->
+<h1>Portfolio</h1>
+
+<!-- Displays a subheading Books to categorize the content that follows -->
+<h2>Books</h2>
+<!-- Creating table with bootstrap classes -->
+<table class="table table-striped">\
+    <!-- Table header -->
+    <thead>
+        <!-- Table rows-->
+        <tr>
+            <th>Author</th>
+            <th>Book name</th>
+            <th>Genre</th>
+            <th>Purchase date</th>
+            <th>Published in</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <!-- Table body -->
+    <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.author }}</td>
+                <td>{{ book.book_name }}</td>
+                <td>{{ book.genre }}</td>
+                <td>{{ book.purchase_date }}</td>
+                <td>{{ book.publication_year }}</td>
+                <td>{{ book.price }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

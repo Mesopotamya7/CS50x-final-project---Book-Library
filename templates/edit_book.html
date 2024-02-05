@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+<!-- Extends the layout.html file for inheriting its structure -->
+
+{% block title %}
+    Edit Book
+{% endblock %}
+<!-- Sets the title of the page as "Edit Book" -->
+
+{% block main %}
+    <div class="container">
+        <h1>Edit Book</h1>
+        <!-- Main content block starts here -->
+
+        <form action="{{ url_for('edit_book', book_id=book.id) }}" method="post">
+            <!-- Form for editing book details -->
+
+            <div class="mb-3">
+                <label for="author" class="form-label">Author:</label>
+                <!-- Input field for the author's name -->
+                <input type="text" class="form-control" id="author" name="author" value="{{ book.author }}">
+                <!-- Displays the author's name fetched from the 'book' object -->
+            </div>
+
+            <div class="mb-3">
+                <label for="book_name" class="form-label">Book Name:</label>
+                <!-- Input field for the book's name -->
+                <input type="text" class="form-control" id="book_name" name="book_name" value="{{ book.book_name }}">
+                <!-- Displays the book's name fetched from the 'book' object -->
+            </div>
+
+            <div class="mb-3">
+                <label for="genre" class="form-label">Genre:</label>
+                <!-- Input field for the book's genre -->
+                <input type="text" class="form-control" id="genre" name="genre" value="{{ book.genre }}">
+                <!-- Displays the genre fetched from the 'book' object -->
+            </div>
+
+            <div class="mb-3">
+                <label for="purchase_date" class="form-label">Purchase Date:</label>
+                <!-- Input field for the book's purchase date -->
+                <input type="date" class="form-control" id="purchase_date" name="purchase_date" value="{{ book.purchase_date }}">
+                <!-- Displays the purchase date fetched from the 'book' object -->
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Price:</label>
+                <!-- Input field for the book's price -->
+                <input type="text" class="form-control" id="price" name="price" value="{{ book.price }}">
+                <!-- Displays the price fetched from the 'book' object -->
+            </div>
+
+            <div class="mb-3">
+                <label for="publication_year" class="form-label">Publication Year:</label>
+                <!-- Input field for the book's publication year -->
+                <input type="text" class="form-control" id="publication_year" name="publication_year" value="{{ book.publication_year }}">
+                <!-- Displays the publication year fetched from the 'book' object -->
+            </div>
+
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="book_gift" name="book_gift" {% if book.book_gift == 1 %} checked {% endif %}>
+                <!-- Checkbox indicating if the book was received as a gift -->
+                <label class="form-check-label" for="book_gift">Received as Gift</label>
+                <!-- Displays a label for the checkbox -->
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <!-- Submit button to save the changes made in the form -->
+        </form>
+        <!-- Form ends -->
+
+    </div>
+    <!-- Closing container div -->
+{% endblock %}
+<!-- End of the main content block -->

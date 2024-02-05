@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book Library Overview
+{% endblock %}
+
+{% block custom_styles %}
+    <style>
+        /* Custom CSS for Book Library Overview */
+        .category {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .category h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+    </style>
+{% endblock %}
+
+{% block main %}
+    <!-- Main heading -->
+    <h1 class="text-center">Book Library Overview</h1>
+
+    <div class="row mt-4">
+        <!-- Two columns layout-->
+        <div class="col-lg-6">
+            <!-- User statistics -->
+            <div class="category">
+                <h2>User Statistics</h2>
+                <div class="user-stats">
+                    <p><strong>Total Number of Books:</strong> {{ total_books }}</p>
+                    <p><strong>Favorite Genre:</strong> {{ favorite_genre }}</p>
+                    <p><strong>Most Popular Author:</strong> {{ most_popular_author }}</p>
+                    <p><strong>Total Books received as Gift:</strong> {{ book_gifts_count }}</p>
+                </div>
+            </div>
+
+            <!-- Oldest purchased book -->
+            <div class="category">
+                <h2>Oldest Purchased Book</h2>
+                <div class="oldest-purchased-book">
+                    {% if oldest_purchased_book %}
+                        {% if oldest_purchased_book.price %}
+                            <p><strong>Author:</strong> {{ oldest_purchased_book.author }}</p>
+                            <p><strong>Title:</strong> {{ oldest_purchased_book.book_name }}</p>
+                            <p><strong>Purchased On:</strong> {{ oldest_purchased_book.purchase_date }}</p>
+                        {% else %}
+                            <p>No oldest purchased book found.</p>
+                        {% endif %}
+                    {% else %}
+                        <p>No oldest purchased book found.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Most expensive book -->
+        <div class="col-lg-6">
+            <div class="category">
+                <h3>Most Expensive Book</h3>
+                {% if most_expensive_book %}
+                    <p><strong>Title:</strong> {{ most_expensive_book['book_name'] }}</p>
+                    <p><strong>Author:</strong> {{ most_expensive_book['author'] }}</p>
+                    <p><strong>Price:</strong> {{ most_expensive_book['price'] }} lei</p>
+                {% else %}
+                    <p>No most expensive book available.</p>
+                {% endif %}
+            </div>
+
+            <!-- Gifted vs purchased books -->
+            <div class="category">
+                <h2>Gifted vs. Purchased Books</h2>
+                <div class="gifted-vs-purchased">
+                    <p><strong>Percentage of Books Received as Gifts:</strong> {{ book_gifts_percentage }}%</p>
+                    <p><strong>Percentage of Purchased Books:</strong> {{ books_purchased }}%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
